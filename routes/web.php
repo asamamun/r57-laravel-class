@@ -13,7 +13,7 @@ Route::get('/todos', [TodoController::class, 'index'])->name('todo.index');
 Route::middleware(CheckAdminRole::class)->group(function () {
     Route::post('/todo', [TodoController::class, 'store']);
     Route::get('/todo/add', [TodoController::class, 'create']);
-    Route::get('/users', [UserController::class, 'index']);
+    Route::get('/users', [UserController::class, 'index'])->name('users');
 });
 
 Route::get('/dashboard', function () {
