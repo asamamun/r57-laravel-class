@@ -10,6 +10,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 Route::get('/todos', [TodoController::class, 'index'])->name('todo.index');
+Route::get('/ct', [TodoController::class, 'createtodo']);
 Route::middleware(CheckAdminRole::class)->group(function () {
     Route::post('/todo', [TodoController::class, 'store']);
     Route::get('/todo/add', [TodoController::class, 'create']);

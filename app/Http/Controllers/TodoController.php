@@ -75,4 +75,10 @@ class TodoController extends Controller
     {
         //
     }
+
+        //createuser
+        public function createtodo(){
+            $todos = Todo::factory()->count(3)->create();
+            dd($todos);
+        }
 }
