@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\UserController;
@@ -15,6 +16,8 @@ Route::middleware(CheckAdminRole::class)->group(function () {
     Route::post('/todo', [TodoController::class, 'store']);
     Route::get('/todo/add', [TodoController::class, 'create']);
     Route::get('/users', [UserController::class, 'index'])->name('users');
+    // Route::get('/categories', [CategoryController::class, 'index']);
+    Route::resource('categories', CategoryController::class);
 });
 
 Route::get('/dashboard', function () {

@@ -12,7 +12,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::paginate(config('global.paginate'));
+        return view('categories.index', compact('categories'));
+        // return view('categories.index', ['categories' => $categories]);
+        // return view('categories.index')->with('categories', $categories);
     }
 
     /**
@@ -20,7 +23,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view ("categories.create");
     }
 
     /**
@@ -28,7 +31,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        Category::create($request->all());
+        return redirect()->route('categories.index')->with('success', 'Category created successfully.');
     }
 
     /**
@@ -36,7 +41,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return view('categories.show', ['category' => $category]);
     }
 
     /**
