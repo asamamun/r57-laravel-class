@@ -16,6 +16,9 @@
 {{-- flash message --}}
 @include('inc.flash')
 {{-- flash message end --}}
+{{-- flash message --}}
+@include('inc.error')
+{{-- flash message end --}}
 <div class="row">
     <div class="col-md-9">
         @yield('content')

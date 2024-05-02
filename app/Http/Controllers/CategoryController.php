@@ -31,8 +31,29 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'name' => 'required|unique:categories|max:255',
+            'slug'=>'required|unique:categories|max:255',
+            'description' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'status' => 'required',
+        ]);
         // dd($request->all());
-        Category::create($request->all());
+
+        // $image = $request->file('image');
+        // $image_name = time().'_'.$image->getClientOriginalName();
+        // $file = $image->move(public_path('assets/images/category'), $image_name);
+        $imagePath = $request->file('image')->store('category', 'public');
+        // dd($image_name);
+        $data = [
+            'name' => $request->name,
+            'slug' => $request->slug,
+            'description' => $request->description,
+            'image' => $imagePath,
+            'status' => $request->status,
+        ];
+        // Category::create($request->all());
+        Category::create($data);
         return redirect()->route('categories.index')->with('success', 'Category created successfully.');
     }
 
