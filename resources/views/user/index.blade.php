@@ -12,6 +12,7 @@
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Roles</th>
+            <th scope="col">Profile</th>
             <th scope="col">Created at</th>
             <th scope="col">Updated at</th>
         </tr>
@@ -23,6 +24,19 @@
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
             <td>{{ $user->roles }}</td>
+            <td> 
+                @if ($user->profile)
+                    <ul>
+                        <li>{{ $user->profile->first_name }}</li>
+                        <li>{{ $user->profile->last_name }}</li>
+                        <li>{{ $user->profile->phone }}</li>
+                    </ul>
+                @else
+                    
+                        <span class="text-danger">No Profile available</span>
+                    
+                @endif
+            </td>
             <td>{{ $user->created_at }}</td>
             <td>{{ $user->updated_at }}</td>
         </tr>  
