@@ -12,7 +12,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate(config('global.paginate'));
+        $categories = Category::with('subcategories')->paginate(config('global.paginate'));
         return view('categories.index', compact('categories'));
         // return view('categories.index', ['categories' => $categories]);
         // return view('categories.index')->with('categories', $categories);

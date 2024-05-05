@@ -24,6 +24,7 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="{{ URL('categories') }}">Categories</a></li>
+            <li><a class="dropdown-item" href="{{ URL('subcategories') }}">Sub Categories</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>

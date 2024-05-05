@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\CheckAdminRole;
@@ -20,6 +21,7 @@ Route::middleware(CheckAdminRole::class)->group(function () {
     Route::get('/users', [UserController::class, 'index'])->name('users');
     // Route::get('/categories', [CategoryController::class, 'index']);
     Route::resource('categories', CategoryController::class);
+    Route::resource('subcategories', SubCategoryController::class);
 });
 
 Route::get('/dashboard', function () {

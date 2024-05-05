@@ -22,6 +22,13 @@
                 @foreach ($categories as $category)
                     <tr>
                         <td class="text-center">{{ $loop->iteration }}</td>
+                        <td>
+                            @forelse ($category->subcategories as $sc)
+                                <li class="text-success">{{ $sc->name }}</li>
+                            @empty
+                                <li class="text-danger">No subcategories</li>
+                            @endforelse
+                        </td>
                         <td>{{ $category->name }}</td>
                         <td>{{ $category->slug }}</td>
                         <td>{{ $category->description }}</td>
