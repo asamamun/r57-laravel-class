@@ -13,6 +13,7 @@ Route::get('/', function () {
 })->name('home');
 Route::get('/todos', [TodoController::class, 'index'])->name('todo.index');
 Route::get('/ct', [TodoController::class, 'createtodo']);
+Route::get('/su/{uid}', [UserController::class, 'showuser']);
 //profiletest
 Route::get('/profiletest/{id}', [UserController::class, 'profiletest']);
 Route::middleware(CheckAdminRole::class)->group(function () {

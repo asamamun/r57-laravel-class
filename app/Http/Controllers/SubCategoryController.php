@@ -32,39 +32,51 @@ class SubCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        SubCategory::create($request->all());
-        return redirect()->route('subcategories.index')->with('success', 'SubCategory created successfully.');
+        $subcategory = SubCategory::create($request->all());
+        return redirect()->route('subcategories.show', $subcategory)->with('success', 'SubCategory created successfully.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(SubCategory $subCategory)
+    public function show(SubCategory $subcategory)
     {
-        //
+        //dd($subcategory);
+        return view('subcategories.show')->with('subcategory', $subcategory);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(SubCategory $subCategory)
-    {
-        //
+    public function edit(SubCategory $subcategory)    {
+        // dd($subcategory);
+        $c = Category::pluck("name","id");
+        return view('subcategories.edit')
+        ->with('categories', $c)
+        ->with('subcategory', $subcategory);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, SubCategory $subCategory)
+    public function update(Request $request, SubCategory $subcategory)
     {
-        //
+        // dd($subategory);
+        $request->validate([
+            'name' => 'required',
+            'category_id' => 'required|exists:categories,id'
+        ]);
+        $subcategory->update($request->all());
+        return redirect()->route('subcategories.index')->with('success', 'SubCategory updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(SubCategory $subCategory)
+    public function destroy(SubCategory $subcategory)
     {
-        //
+        dd($subcategory->id);
+        SubCategory::destroy($subategory->id);
+        return redirect()->route('subcategories.index')->with('success', 'SubCategory deleted successfully.');
     }
 }

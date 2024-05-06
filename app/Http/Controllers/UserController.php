@@ -86,4 +86,8 @@ class UserController extends Controller
         
     }
 
+    public function showuser($uid){
+        dd(User::find($uid));
+    }
+
 }
