@@ -12,8 +12,11 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 Route::get('/todos', [TodoController::class, 'index'])->name('todo.index');
-Route::get('/ct', [TodoController::class, 'createtodo']);
-Route::get('/su/{uid}', [UserController::class, 'showuser']);
+// Route::get('/ct', [TodoController::class, 'createtodo']);
+Route::get('/ct', '\App\Http\Controllers\TodoController@createtodo');
+
+Route::get('/su/{uid}', [UserController::class, 'showuser'])->where('uid', '[0-9]+');
+
 //profiletest
 Route::get('/profiletest/{id}', [UserController::class, 'profiletest']);
 Route::middleware(CheckAdminRole::class)->group(function () {
