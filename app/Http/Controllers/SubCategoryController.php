@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class SubCategoryController extends Controller
 {
@@ -13,7 +14,11 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        $subcategories = SubCategory::with('category')->paginate(10);
+        Log::info('Loading this page at'. time());
+        // Log::warning('Calling Warning at'. time() );
+        // Log::error('Loading this page at'. time() );
+        // Log::debug(SubCategory::with('category')->paginate(10)->toArray());
+        $subcategories = SubCategory::with('category')->withTrashed()->paginate(10);
         return view('subcategories.index')->with('subcategories', $subcategories);
     }
 
@@ -75,8 +80,10 @@ class SubCategoryController extends Controller
      */
     public function destroy(SubCategory $subcategory)
     {
-        dd($subcategory->id);
-        SubCategory::destroy($subategory->id);
+        // dd($subcategory->id);
+        SubCategory::destroy($subcategory->id);
         return redirect()->route('subcategories.index')->with('success', 'SubCategory deleted successfully.');
+        //to force delete
+        //YourModel::withTrashed()->where('id', $id)->forceDelete();
     }
 }

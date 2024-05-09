@@ -14,13 +14,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+// Route::get('/','welcome');
 Route::get('/todos', [TodoController::class, 'index'])->name('todo.index');
 // Route::get('/ct', [TodoController::class, 'createtodo']);
-Route::get('/ct', '\App\Http\Controllers\TodoController@createtodo');
 
 Route::prefix('userinfo')->group(function () {
 Route::get('/su/{uid}', [UserController::class, 'showuser'])->where('uid', '[0-9]+');
 Route::get('/ct', '\App\Http\Controllers\TodoController@createtodo');
+Route::get('/helpertest', [TestController::class, 'helpertest']);
 });
 
 Route::namespace('Teacher')->group(function () {

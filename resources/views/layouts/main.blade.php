@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title }}</title>
+    <meta name="csrf-token" content="<?php echo csrf_token(); ?>" id="token">
     @yield('head')
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css')}}">
@@ -91,5 +92,17 @@
 {{-- footer end --}}
     </div>
     <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery-3.7.1.min.js')}}"></script>
+    <script>
+        $(document).ready(function() {
+          $.ajaxSetup({
+          headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+});
+
+        })
+    </script>
+    @yield('script')
 </body>
 </html>

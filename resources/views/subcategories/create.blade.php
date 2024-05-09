@@ -14,4 +14,10 @@
 
 @endsection
 
+@section('script')
+<script>
+    alert(5);
+</script>
+@endsection
+
 

@@ -17,7 +17,7 @@
     </thead>
     <tbody>
         @forelse ($subcategories as $subcategory)
-        <tr>
+        <tr class="{{$subcategory->deleted_at ? 'table-danger' : ''}}">
             <td>{{ $loop->index + 1 }}</td>
             <td>{{ $subcategory->name }}</td>
             <td>{{ $subcategory->category->name }}</td>
@@ -50,6 +50,12 @@
 </table>
 
 
+@endsection
+
+@section('script')
+<script>
+    alert(6);
+</script>
 @endsection
 
 
