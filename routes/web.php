@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\CheckAdminRole;
@@ -16,6 +17,9 @@ Route::get('/todos', [TodoController::class, 'index'])->name('todo.index');
 Route::get('/ct', '\App\Http\Controllers\TodoController@createtodo');
 
 Route::get('/su/{uid}', [UserController::class, 'showuser'])->where('uid', '[0-9]+');
+Route::get('/testlink/morepath/somemorepath/{var1}/{var2}/{var3}', [TestController::class, 'testthreeparam'])->name('test.threepath')->middleware('throttle:5,1');
+Route::get("testparam", [TestController::class, 'testparam']);
+
 
 //profiletest
 Route::get('/profiletest/{id}', [UserController::class, 'profiletest']);
