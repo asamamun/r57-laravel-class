@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use function App\Helpers\myadd;
 
@@ -18,5 +19,11 @@ class TestController extends Controller
     }
     public function helpertest(){
         echo myadd(2, 3);
+    }
+
+    public function dbone(){
+
+        $usres = DB::table('users')->get();
+        dd($usres);
     }
 }

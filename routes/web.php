@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DbtestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\Teacher\AttendenceController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\CheckAdminRole;
+use Barryvdh\Debugbar\DataCollector\QueryCollector;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -37,7 +39,8 @@ Route::fallback(function () {
 Route::get('/testlink/morepath/somemorepath/{var1}/{var2}/{var3}', [TestController::class, 'testthreeparam'])->name('test.threepath')->middleware('throttle:100,1');
 Route::get("testparam", [TestController::class, 'testparam']);
 
-
+//query builder
+Route::get('/db/dbone', [DbtestController::class, 'dbone']);
 //profiletest
 Route::get('/profiletest/{id}', [UserController::class, 'profiletest']);
 Route::middleware(CheckAdminRole::class)->group(function () {
