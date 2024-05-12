@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Todo extends Model
 {
     use HasFactory;
+    protected $casts = [
+        'title' => 'string',
+        'description' => 'string',
+        'is_completed' => 'boolean',        
+        ];
+    public function scopeComplete($query)
+    {
+        return $query->where('is_completed', 1);
+    }
+    public function scopeInComplete($query)
+    {
+        return $query->where('is_completed', 0);
+    }
 }

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class DbtestController extends Controller
 {
     public function dbone(){
-        echo "db one";
+        echo "Query Builder with DB facade";
         $users = DB::table('users')
         ->skip(10)
         ->take(5)
