@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DbtestController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\Teacher\AttendenceController;
@@ -50,11 +51,13 @@ Route::middleware(CheckAdminRole::class)->group(function () {
     // Route::get('/categories', [CategoryController::class, 'index']);
     Route::resource('categories', CategoryController::class);
     Route::resource('subcategories', SubCategoryController::class);
+    Route::resource('products', ProductController::class);
 });
-
-Route::get('/dashboard', function () {
+Route::get("/getsubcat/{id}",[SubcategoryController::class, 'getSubcat']);
+Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');;
+/* Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard'); */
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

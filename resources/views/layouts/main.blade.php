@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="<?php echo csrf_token(); ?>" id="token">
     @yield('head')
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/lightbox.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css')}}">
 <body>
     <div class="container">
@@ -93,6 +94,7 @@
     </div>
     <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery-3.7.1.min.js')}}"></script>
+    <script src="{{asset('assets/js/lightbox.min.js')}}"></script>
     <script>
         $(document).ready(function() {
           $.ajaxSetup({

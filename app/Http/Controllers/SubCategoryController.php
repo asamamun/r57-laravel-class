@@ -86,4 +86,8 @@ class SubCategoryController extends Controller
         //to force delete
         //YourModel::withTrashed()->where('id', $id)->forceDelete();
     }
+    public function getSubcat($id){
+        $subcategories = SubCategory::where('category_id', $id)->pluck('name','id');
+        return response()->json($subcategories);
+    }
 }
