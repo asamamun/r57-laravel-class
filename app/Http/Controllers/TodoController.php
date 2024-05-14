@@ -81,4 +81,7 @@ class TodoController extends Controller
             $todos = Todo::factory()->count(3)->create();
             dd($todos);
         }
+        public function checkdelete(){
+            echo "delete method working";
+        }
 }

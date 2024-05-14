@@ -11,6 +11,7 @@
             <tr>
                 <th>#</th>
                 <th>Category/Subcategory</th>
+                <th>Images</th>
                 <th>Name</th>
                 <th>Sku</th>
                 <th>Details</th>
@@ -19,7 +20,7 @@
                 <th>Status</th>
                 <th>Hot</th>
                 <th>New</th>
-                <th>Images</th>
+                
                 <th>Action</th>
             </tr>
         </thead>
@@ -28,6 +29,17 @@
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $product->category->name }} <br>{{ $product->subcategory->name }}</td>
+                <td>@if ($product->images)
+                    
+                        @foreach ($product->images as $image)
+                        
+                            <a href="{{ asset('storage/'.$image->name) }}" data-lightbox="image-{{$product->id}}" data-title="{{$product->name}}"><img src="{{ asset('storage/'.$image->name) }}" width="50px"></a>
+                            
+                        
+                        @endforeach
+                    
+                    
+                @endif</td>
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->sku }}</td>
                 <td>{{ $product->details }}</td>
@@ -36,17 +48,7 @@
                 <td @class(['bg-info','text-success' => $product->status, 'text-danger' => !$product->status])>{{ $product->status == 1 ? 'active' : 'inactive' }}</td>
                 <td @class(['text-danger' => $product->hot])>{{ $product->hot == 1 ? 'hot' : 'not hot' }}</td>
                 <td @class(['text-danger' => $product->new, 'text-success' => !$product->new])>{{ $product->new == 1 ? 'new' : 'not new' }}</td>
-                <td>@if ($product->images)
-                    <ul>
-                        @foreach ($product->images as $image)
-                        <li>
-                            <a href="{{ asset('storage/'.$image->name) }}" data-lightbox="image-{{$product->id}}" data-title="{{$product->name}}"><img src="{{ asset('storage/'.$image->name) }}" width="50px"></a>
-                            
-                        </li>
-                        @endforeach
-                    </ul>
-                    
-                @endif</td>
+                
                 <td>
                     <a class="btn btn-sm btn-primary" href="{{ route('products.show', $product->id) }}"> <i class="bi bi-eye-fill"></i> </a>
                     <a class="btn btn-sm btn-warning" href="{{ route('products.edit', $product->id) }}"><i class="bi bi-pencil"></i></a>

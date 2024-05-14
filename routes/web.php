@@ -46,6 +46,7 @@ Route::get('/db/dbone', [DbtestController::class, 'dbone']);
 Route::get('/profiletest/{id}', [UserController::class, 'profiletest']);
 Route::middleware(CheckAdminRole::class)->group(function () {
     Route::post('/todo', [TodoController::class, 'store']);
+    // Route::delete('/todo', [TodoController::class, 'checkdelete']);
     Route::get('/todo/add', [TodoController::class, 'create']);
     Route::get('/users', [UserController::class, 'index'])->name('users');
     // Route::get('/categories', [CategoryController::class, 'index']);

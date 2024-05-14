@@ -21,7 +21,7 @@ class ProductController extends Controller
     {
         $products = Product::with('images')->paginate(config('global.paginate'));
         // return view ('products.index', compact('products'));
-        return view ('products.index', ['products' => $products]);
+        return view('products.index', ['products' => $products]);
     }
 
     /**
@@ -32,7 +32,7 @@ class ProductController extends Controller
         $categories = Category::pluck('name', 'id');
         $subcategories = [];
         $product = null;
-        return view ('products.create', compact('categories', 'subcategories', 'product'));
+        return view('products.create', compact('categories', 'subcategories', 'product'));
     }
 
     /**
@@ -43,46 +43,43 @@ class ProductController extends Controller
         // dd($request->all());
         $product = Product::create($request->all());
         //dd($product);
-        if($product){
+        if ($product) {
             //
-         //    dd($request);
+            //    dd($request);
             if ($request->hasFile('images')) {
-             $files = $request->file('images');
-             
-             foreach ($files as $file) {
-                 // Save or process each file as needed
-                 $loc = $file->store('uploads');
-                 $i = new Image();
-                 $i->name = $loc;
-                 $product->images()->save($i);
-                 //echo Storage::path($loc) . "<br>";
-                 //resize the images and store with same name. max resolution can be 1024px
-                 //watermark
-                     //image intervention
-                     $manager = new ImageManager(new Driver());
-                     $image = $manager->read(Storage::path($loc));
-                     $image = $image
-                     ->scaleDown(width:800)
-                /*for old version*/
-                     //  ->resize(800, null, function ($constraint) {
-                    //      $constraint->aspectRatio();
-                    //      $constraint->upsize();
-                    //  })
-                     ->place(storage_path("app/public").'/logo.png','bottom-right')
-                     ->save(Storage::path($loc));
-                     //watermark end
-             }
-              return redirect()->route("products.create")->with("success","Product saved successfully. ID is ".$product->id );
-         } 
-         else{
-             echo "image not available";
-         }
+                $files = $request->file('images');
+
+                foreach ($files as $file) {
+                    // Save or process each file as needed
+                    $loc = $file->store('uploads');
+                    $i = new Image();
+                    $i->name = $loc;
+                    $product->images()->save($i);
+                    //echo Storage::path($loc) . "<br>";
+                    //resize the images and store with same name. max resolution can be 1024px
+                    //watermark
+                    //image intervention
+                    $manager = new ImageManager(new Driver());
+                    $image = $manager->read(Storage::path($loc));
+                    $image = $image
+                        ->scaleDown(width: 800)
+                        /*for old version*/
+                        //  ->resize(800, null, function ($constraint) {
+                        //      $constraint->aspectRatio();
+                        //      $constraint->upsize();
+                        //  })
+                        ->place(storage_path("app/public") . '/logo.png', 'bottom-right')
+                        ->save(Storage::path($loc));
+                    //watermark end
+                }
+                return redirect()->route("products.create")->with("success", "Product saved successfully. ID is " . $product->id);
+            } else {
+                echo "image not available";
+            }
             // 
-         }
-         else{
-             echo "Product add failed";
-         }
-        
+        } else {
+            echo "Product add failed";
+        }
     }
 
     /**
