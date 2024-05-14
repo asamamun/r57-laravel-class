@@ -5,11 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Ashish S. Maharjan" />
     <meta name="robots" content="index, follow" />
-
-    <link
-      rel="manifest"
-      href="https://asis2016.github.io/bootstrap-5-admin-template/manifest.json"
-    />
     <meta
       name="description"
       content="adminAM - Bootstrap 5 Admin Template with Dashboard Demo"
@@ -29,7 +24,9 @@
     />
     <meta name="msapplication-TileColor" content="#FFFFFF" />
 
-    <title>Admin Template | Dashboard</title>
+    <title>Admin-{{ $title }}</title>
+    <meta name="csrf-token" content="<?php echo csrf_token(); ?>" id="token">
+    @yield('head')
     <!-- <meta http-equiv="refresh" content="5"/> -->
 
     <!-- CSS -->
@@ -1489,17 +1486,20 @@
     <script src="{{asset("assets/js/bootstrap.bundle.min.js")}}"></script>
     {{-- lightbox js --}}
     <script src="{{asset("assets/js/lightbox.min.js")}}"></script>
+    {{-- sweet alert --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- chartjs -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- jvectormap -->
-    <script src="{{asset("static/js/jquery-jvectormap-2.0.5.min.js")}}"></script>
-    <script src="{{asset("static/js/jquery-jvectormap-world-mill-en.js")}}"></script>
+    {{-- <script src="{{asset("static/js/jquery-jvectormap-2.0.5.min.js")}}"></script> --}}
+    {{-- <script src="{{asset("static/js/jquery-jvectormap-world-mill-en.js")}}"></script> --}}
     <!-- ploty -->
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    {{-- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> --}}
     <!-- script.js -->
     <script src="{{asset("static/js/script.js")}}"></script>
 
-    <script src="{{asset("static/js/dashboard.js")}}"></script>
-    <script src="{{asset("static/js/user-demographics.js")}}"></script>
+    {{-- <script src="{{asset("static/js/dashboard.js")}}"></script> --}}
+    {{-- <script src="{{asset("static/js/user-demographics.js")}}"></script> --}}
+    @yield('script')
   </body>
 </html>

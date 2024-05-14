@@ -95,7 +95,12 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        //dd($product->with('images')->get());
+        $categories = Category::pluck('name', 'id');
+        $subcategories = SubCategory::where('category_id', $product->category_id)->pluck('name', 'id');
+        $product = Product::with('images')->find($product->id);
+        // dd($product);
+        return view('products.edit', compact('categories', 'subcategories', 'product'));
     }
 
     /**
@@ -112,5 +117,18 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+
+    public function deleteImage($id){
+        //delete from table
+        $image = Image::find($id);
+        
+        //delete from storage
+        Storage::delete($image->name);
+        $image->delete();
+        
+        // return redirect()->route('products.create')->with('success', 'Image deleted successfully');
+        //json response
+        return response()->json(['status'=>true,'message' => 'Image deleted successfully'], 200);
     }
 }
