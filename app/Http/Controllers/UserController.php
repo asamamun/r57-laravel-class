@@ -69,7 +69,7 @@ class UserController extends Controller
     }
 
     public function profiletest($id){
-        $duinumberuser = User::find($id);
+        $u = User::find($id);
         $p = new Profile();
         $p->first_name = fake()->firstName();
         $p->last_name = fake()->lastName();
@@ -81,7 +81,7 @@ class UserController extends Controller
         $p->website = fake()->url();
         $p->description = fake()->text(100);
         $p->status = fake()->numberBetween(0, 1);
-        $result = $duinumberuser->profile()->save($p);
+        $result = $u->profile()->save($p);
         dd($result);
         
     }

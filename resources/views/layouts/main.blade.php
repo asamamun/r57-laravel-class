@@ -470,6 +470,13 @@
           </div>
           <!-- page title ends -->
 <div class="row mt-4 sm-mt-0">
+  
+{{-- flash message --}}
+@include('inc.flash')
+{{-- flash message end --}}
+{{-- flash message --}}
+@include('inc.error')
+{{-- flash message end --}}
     @yield('content')
 </div>
           

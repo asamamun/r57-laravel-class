@@ -14,7 +14,10 @@
             a unique token for each form and checks that the token sent with the form matches the token in the
             session.
         </p>
-        @csrf
+<div class="mb-3">
+    <label for="topics" class="form-label">Topics</label>
+    {{ html()->multiselect('topics[]', $topics)->class('form-select') }}
+</div>
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
             <input type="text" class="form-control" name="title" id="title">

@@ -19,11 +19,20 @@
     <marquee behavior="" direction="">onlynot logged in users will see this</marquee>
 @endguest
 <hr>
+<ol>
 @forelse ($todos as $todo)
 <li>{{ $todo->title }} - {{ $todo->description }} - {{ $todo->is_completed }}</li> 
+<ul>
+@forelse ($todo->topics as $t)
+  <li>{{ $t->title }}</li>  
+@empty
+    <li class="text-danger">no topics</li>
+@endforelse
+</ul>
 @empty
     <h3>no list found</h3>
 @endforelse
+</ol>
 <hr>
 @endsection
 

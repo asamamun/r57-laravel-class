@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Todo;
+use App\Models\Topic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,7 +18,7 @@ class TodoController extends Controller
         // dd(Auth::id());
         // echo "todo called"; 
         $title = "Todo List <b>testing</b>";
-        return view("todo.index",['title'=>$title, 'todos'=>Todo::all()]);
+        return view("todo.index",['title'=>$title, 'todos'=>Todo::with('topics')->get()]);
         // return view("todo.index",['title'=>$title]);
     }
 
@@ -26,7 +27,9 @@ class TodoController extends Controller
      */
     public function create()
     {
-        return view ("todo.create");
+        $topics = Topic::pluck('title', 'id');
+        // dd($topics);
+        return view ("todo.create",compact('topics'));
     }
 
     /**
@@ -41,6 +44,9 @@ class TodoController extends Controller
         $todo->description = $request->description;
         $todo->is_completed = $request->is_completed ?? 0;
         $todo->save();
+
+        $todo->topics()->sync($request->topics);
+
         return redirect()->route('todo.index')->with('success', 'Todo created successfully.');
     }
 

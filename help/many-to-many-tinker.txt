@@ -1,0 +1,267 @@
+Microsoft Windows [Version 10.0.19045.4291]
+(c) Microsoft Corporation. All rights reserved.
+
+D:\xampp8240\htdocs\ROUND57\Laravel\todo>php artisan tinker
+Psy Shell v0.12.3 (PHP 8.2.4 — cli) by Justin Hileman
+> $c = Category::with('images')->find(1);
+[!] Aliasing 'Category' to 'App\Models\Category' for this Tinker session.
+= App\Models\Category {#6141
+    id: 1,
+    name: "Garments",
+    slug: "BBB",
+    description: "CCC",
+    image: "D:\xampp8240\tmp\phpB6E1.tmp",
+    status: 1,
+    created_at: "2024-05-02 07:09:47",
+    updated_at: "2024-05-02 07:09:47",
+    images: Illuminate\Database\Eloquent\Collection {#6172
+      all: [
+        App\Models\Image {#6176
+          id: 1,
+          product_id: 2,
+          name: "uploads/J7duKjl6tqO7qRvZqVSVdxzZXtyTQ6bE1eAfxyff.jpg",
+          created_at: "2024-05-13 05:19:45",
+          updated_at: "2024-05-13 05:19:45",
+          laravel_through_key: 1,
+        },
+        App\Models\Image {#6177
+          id: 2,
+          product_id: 2,
+          name: "uploads/ZMPCD9V3RXxYGklVWK8Bw188Dx2qSs12CYWXt6we.png",
+          created_at: "2024-05-13 05:19:45",
+          updated_at: "2024-05-13 05:19:45",
+          laravel_through_key: 1,
+        },
+        App\Models\Image {#6178
+          id: 3,
+          product_id: 2,
+          name: "uploads/8qLHCVdAxX3eD0PnMx2d0lzvVNI3MGRhMHdT1Cpe.png",
+          created_at: "2024-05-13 05:19:45",
+          updated_at: "2024-05-13 05:19:45",
+          laravel_through_key: 1,
+        },
+        App\Models\Image {#6179
+          id: 4,
+          product_id: 2,
+          name: "uploads/fDSKvcpqYsAE1mH7ppU3PQptzadL5OHg8L0AGbRf.jpg",
+          created_at: "2024-05-13 05:19:45",
+          updated_at: "2024-05-13 05:19:45",
+          laravel_through_key: 1,
+        },
+        App\Models\Image {#6180
+          id: 9,
+          product_id: 5,
+          name: "uploads/DDNOAjJhpr90ZdP58QZHJ1WtiXSnPJialHdVHg5R.jpg",
+          created_at: "2024-05-13 06:37:15",
+          updated_at: "2024-05-13 06:37:15",
+          laravel_through_key: 1,
+        },
+        App\Models\Image {#6181
+          id: 10,
+          product_id: 5,
+          name: "uploads/53RNjqCnHscryqHrAbkQkSp2h7jfr61zCkyyGWr8.jpg",
+          created_at: "2024-05-13 06:37:15",
+          updated_at: "2024-05-13 06:37:15",
+          laravel_through_key: 1,
+        },
+        App\Models\Image {#6182
+          id: 11,
+          product_id: 5,
+          name: "uploads/44XLdOQkLWJ9Hi4quRw2f9zlrZ2bMOLeLy43apXm.jpg",
+          created_at: "2024-05-13 06:37:15",
+          updated_at: "2024-05-13 06:37:15",
+          laravel_through_key: 1,
+        },
+        App\Models\Image {#6183
+          id: 12,
+          product_id: 6,
+          name: "uploads/lkuWAEpMuVLAJwbkvM6ol8QoG7AZglKZ7OHENRic.jpg",
+          created_at: "2024-05-13 07:03:20",
+          updated_at: "2024-05-13 07:03:20",
+          laravel_through_key: 1,
+        },
+        App\Models\Image {#6184
+          id: 13,
+          product_id: 8,
+          name: "uploads/ejYYanfi4Jgrf6VcciVMWohAd9pEIREbsumxFAfL.jpg",
+          created_at: "2024-05-13 07:06:30",
+          updated_at: "2024-05-13 07:06:30",
+          laravel_through_key: 1,
+        },
+        App\Models\Image {#6185
+          id: 22,
+          product_id: 10,
+          name: "uploads/iPQHQFbOHVVMn52nrLYOenM8hEY1OvSiu5yodgN0.jpg",
+          created_at: "2024-05-13 07:16:48",
+          updated_at: "2024-05-13 07:16:48",
+          laravel_through_key: 1,
+        },
+        App\Models\Image {#6186
+          id: 23,
+          product_id: 10,
+          name: "uploads/keo0NwZmLcN0C1iSHoUtLgcBKYpWMM5KxNjv2m2u.jpg",
+          created_at: "2024-05-13 07:16:49",
+          updated_at: "2024-05-13 07:16:49",
+          laravel_through_key: 1,
+        },
+        App\Models\Image {#6187
+          id: 24,
+          product_id: 10,
+          name: "uploads/qvaLE9cqJlYfBalVkt1ra4vOY1UzAPyEV3IF9q0p.jpg",
+          created_at: "2024-05-13 07:16:52",
+          updated_at: "2024-05-13 07:16:52",
+          laravel_through_key: 1,
+        },
+        App\Models\Image {#6188
+          id: 25,
+          product_id: 10,
+          name: "uploads/TC5vGAUaywU5xM5LnlqdCq6QM9a8FvCOwP7qCnHH.jpg",
+          created_at: "2024-05-13 07:16:53",
+          updated_at: "2024-05-13 07:16:53",
+          laravel_through_key: 1,
+        },
+        App\Models\Image {#6189
+          id: 27,
+          product_id: 10,
+          name: "uploads/XKOmkbQ12lbFEVs0cy6veM40bttUaFwmoHxVtcK4.jpg",
+          created_at: "2024-05-13 07:16:56",
+          updated_at: "2024-05-13 07:16:56",
+          laravel_through_key: 1,
+        },
+        App\Models\Image {#6190
+          id: 28,
+          product_id: 10,
+          name: "uploads/cl0Mu9IU4251YSXt3B9pbd2QgYoi1bCQFKsunk6O.jpg",
+          created_at: "2024-05-13 07:16:57",
+          updated_at: "2024-05-13 07:16:57",
+          laravel_through_key: 1,
+        },
+      ],
+    },
+  }
+
+> exit
+
+   INFO  Goodbye.
+
+
+D:\xampp8240\htdocs\ROUND57\Laravel\todo>php artisan make:model Topic -mcr
+
+   INFO  Model [D:\xampp8240\htdocs\ROUND57\Laravel\todo\app\Models\Topic.php] created successfully.
+
+   INFO  Migration [D:\xampp8240\htdocs\ROUND57\Laravel\todo\database\migrations/2024_05_16_050409_create_topics_table.php] created successfully.
+
+   INFO  Controller [D:\xampp8240\htdocs\ROUND57\Laravel\todo\app\Http\Controllers\TopicController.php] created successfully.
+
+
+D:\xampp8240\htdocs\ROUND57\Laravel\todo>php artisan migrate
+
+   INFO  Running migrations.
+
+  2024_05_16_050409_create_topics_table ................................... 136.17ms DONE
+
+
+D:\xampp8240\htdocs\ROUND57\Laravel\todo>php artisan make:migration todo_topics_table --table=todos_topics
+
+   INFO  Migration [D:\xampp8240\htdocs\ROUND57\Laravel\todo\database\migrations/2024_05_16_051854_todo_topics_table.php] created successfully.
+
+
+D:\xampp8240\htdocs\ROUND57\Laravel\todo>php artisan migrate
+
+   INFO  Running migrations.
+
+  2024_05_16_051854_todo_topics_table ....................................... 3.22ms FAIL
+
+   Illuminate\Database\QueryException
+
+  SQLSTATE[42S02]: Base table or view not found: 1146 Table 'r57_laravel.todos_topics' doesn't exist (Connection: mysql, SQL: alter table `todos_topics` add `id` bigint unsigned not null auto_increment primary key, add `todo_id` bigint unsigned null, add `topic_id` bigint unsigned null, add `created_at` timestamp null, add `updated_at` timestamp null)
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:813
+    809▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    810▕                 );
+    811▕             }
+    812▕
+  ➜ 813▕             throw new QueryException(
+    814▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    815▕             );
+    816▕         }
+    817▕     }
+
+  i   A table was not found: You might have forgotten to run your database migrations.
+      https://laravel.com/docs/master/migrations#running-migrations
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:571
+      PDOException::("SQLSTATE[42S02]: Base table or view not found: 1146 Table 'r57_laravel.todos_topics' doesn't exist")
+
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:571
+      PDOStatement::execute()
+
+
+D:\xampp8240\htdocs\ROUND57\Laravel\todo>php artisan migrate
+
+   INFO  Running migrations.
+
+  2024_05_16_051854_todo_topics_table ..................................... 121.13ms DONE
+
+
+D:\xampp8240\htdocs\ROUND57\Laravel\todo>php artisan migrate:rollback
+
+   INFO  Rolling back migrations.
+
+  2024_05_16_051854_todo_topics_table ...................................... 23.40ms DONE
+
+
+D:\xampp8240\htdocs\ROUND57\Laravel\todo>php artisan migrate
+
+   INFO  Running migrations.
+
+  2024_05_16_051854_todo_topics_table ..................................... 109.60ms DONE
+
+
+D:\xampp8240\htdocs\ROUND57\Laravel\todo>php artisan tinker
+Psy Shell v0.12.3 (PHP 8.2.4 — cli) by Justin Hileman
+> $t = new Todo();
+[!] Aliasing 'Todo' to 'App\Models\Todo' for this Tinker session.
+= App\Models\Todo {#6121}
+
+> $t->title = "test";
+= "test"
+
+> $t->description = "test";
+= "test"
+
+> $t->is_completed = 1;
+= 1
+
+> $t->save();
+= true
+
+> $t;
+= App\Models\Todo {#6121
+    title: "test",
+    description: "test",
+    is_completed: 1,
+    updated_at: "2024-05-16 05:38:19",
+    created_at: "2024-05-16 05:38:19",
+    id: 15,
+  }
+
+> $t->topics()->attach([1,3,5]);
+= null
+
+> $t->topics()->detach([1,3]);
+= 2
+
+> $t->topics()->sync([2,4]);
+= [
+    "attached" => [
+      2,
+      4,
+    ],
+    "detached" => [
+      5,
+    ],
+    "updated" => [],
+  ]
+
+>  

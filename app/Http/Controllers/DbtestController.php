@@ -13,7 +13,7 @@ class DbtestController extends Controller
         ->skip(10)
         ->take(5)
         ->get();
-        $users = DB::table('users')->count();
+        // $users = DB::table('users')->count();
         // $users = DB::select('select * from users');
         // $users = DB::delete("delete from users where id = 20");
 

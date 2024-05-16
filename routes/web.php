@@ -13,12 +13,14 @@ use App\Http\Controllers\UserController;
 use App\Http\Middleware\CheckAdminRole;
 use Barryvdh\Debugbar\DataCollector\QueryCollector;
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
 // Route::get('/','welcome');
 Route::get('/todos', [TodoController::class, 'index'])->name('todo.index');
+Route::get('/collection', [TestController::class, 'collection']);
 // Route::get('/ct', [TodoController::class, 'createtodo']);
 
 Route::prefix('userinfo')->group(function () {

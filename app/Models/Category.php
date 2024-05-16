@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Category extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'name',
         'slug',
@@ -17,7 +17,7 @@ class Category extends Model
         'image',
         'status',
     ];
-     /**
+    /**
      * Get the comments for the blog post.
      */
     public function subcategories(): HasMany
@@ -27,5 +27,9 @@ class Category extends Model
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);
+    }
+    public function Images()
+    {
+        return $this->hasManyThrough(Image::class, Product::class);
     }
 }
