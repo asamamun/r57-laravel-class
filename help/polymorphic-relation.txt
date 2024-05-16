@@ -1,0 +1,136 @@
+Microsoft Windows [Version 10.0.19045.4291]
+(c) Microsoft Corporation. All rights reserved.
+
+D:\xampp8240\htdocs\ROUND57\Laravel\todo>php artisan tinker
+Psy Shell v0.12.3 (PHP 8.2.4 — cli) by Justin Hileman
+> use App\Models\Todo;
+> use App\Models\Product;
+> use App\Models\Image;
+> use App\Models\Comment;
+> $t = Todo::find(2);
+= App\Models\Todo {#6139
+    id: 2,
+    title: "ttttttttttt",
+    description: "ttttttttttttt",
+    is_completed: 1,
+    created_at: "2024-04-30 04:39:40",
+    updated_at: "2024-04-30 04:39:40",
+  }
+
+> $t->comments->create(['user_id'=>1,'comment'=>"new comment"]);
+
+   BadMethodCallException  Method Illuminate\Database\Eloquent\Collection::create does not exist.
+
+> $t->comments()->create(['user_id'=>1,'comment'=>"new comment"]);
+= App\Models\Comment {#6152
+    user_id: 1,
+    comment: "new comment",
+    commentable_id: 2,
+    commentable_type: "App\Models\Todo",
+    updated_at: "2024-05-16 07:16:58",
+    created_at: "2024-05-16 07:16:58",
+    id: 1,
+  }
+
+> $p = Product::find(1);
+= App\Models\Product {#6165
+    id: 1,
+    category_id: 1,
+    subcategory_id: 1,
+    name: "Haswai Shirt",
+    sku: "hs123",
+    details: "asdf sadf sadf sdfd",
+    price: 777.0,
+    quantity: 11,
+    status: 0,
+    hot: 1,
+    new: 1,
+    created_at: "2024-05-13 05:05:39",
+    updated_at: "2024-05-13 05:05:39",
+  }
+
+> $p->comments()->create(['user_id'=>2,'comment'=>'nice!!']);
+= App\Models\Comment {#6155
+    user_id: 2,
+    comment: "nice!!",
+    commentable_id: 1,
+    commentable_type: "App\Models\Product",
+    updated_at: "2024-05-16 07:18:04",
+    created_at: "2024-05-16 07:18:04",
+    id: 2,
+  }
+
+> $p->comments()->create(['user_id'=>3,'comment'=>'very nice!!']);
+= App\Models\Comment {#6174
+    user_id: 3,
+    comment: "very nice!!",
+    commentable_id: 1,
+    commentable_type: "App\Models\Product",
+    updated_at: "2024-05-16 07:18:21",
+    created_at: "2024-05-16 07:18:21",
+    id: 3,
+  }
+
+> $allproducts = Product::with('comments')->find(1)
+= App\Models\Product {#6153
+    id: 1,
+    category_id: 1,
+    subcategory_id: 1,
+    name: "Haswai Shirt",
+    sku: "hs123",
+    details: "asdf sadf sadf sdfd",
+    price: 777.0,
+    quantity: 11,
+    status: 0,
+    hot: 1,
+    new: 1,
+    created_at: "2024-05-13 05:05:39",
+    updated_at: "2024-05-13 05:05:39",
+    comments: Illuminate\Database\Eloquent\Collection {#6168
+      all: [
+        App\Models\Comment {#6178
+          id: 2,
+          user_id: 2,
+          comment: "nice!!",
+          commentable_id: 1,
+          commentable_type: "App\Models\Product",
+          created_at: "2024-05-16 07:18:04",
+          updated_at: "2024-05-16 07:18:04",
+        },
+        App\Models\Comment {#6180
+          id: 3,
+          user_id: 3,
+          comment: "very nice!!",
+          commentable_id: 1,
+          commentable_type: "App\Models\Product",
+          created_at: "2024-05-16 07:18:21",
+          updated_at: "2024-05-16 07:18:21",
+        },
+      ],
+    },
+  }
+
+> $allproducts = Todo::with('comments')->find(2)
+= App\Models\Todo {#6150
+    id: 2,
+    title: "ttttttttttt",
+    description: "ttttttttttttt",
+    is_completed: 1,
+    created_at: "2024-04-30 04:39:40",
+    updated_at: "2024-04-30 04:39:40",
+    comments: Illuminate\Database\Eloquent\Collection {#6201
+      all: [
+        App\Models\Comment {#6131
+          id: 1,
+          user_id: 1,
+          comment: "new comment",
+          commentable_id: 2,
+          commentable_type: "App\Models\Todo",
+          created_at: "2024-05-16 07:16:58",
+          updated_at: "2024-05-16 07:16:58",
+        },
+      ],
+    },
+  }
+
+>  

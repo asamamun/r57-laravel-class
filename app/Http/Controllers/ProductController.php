@@ -19,7 +19,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('images')->paginate(config('global.paginate'));
+        $products = Product::
+        with(['images','comments.user'])
+        ->paginate(config('global.paginate'));
+        // dd($products);
         // return view ('products.index', compact('products'));
         return view('products.index', ['products' => $products]);
     }

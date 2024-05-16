@@ -59,6 +59,18 @@
                     </form>
                 </td>
             </tr>
+            <tr>
+                <td colspan="12">
+                    <i>Comments</i>
+                    <ul>
+                    @forelse ($product->comments as $c)
+                       <li>{{$c->comment}} by {{$c->user->name}} ({{$c->user->email}})</li> 
+                    @empty
+                        <li>no comments</li>
+                    @endforelse
+                    </ul>
+                </td>
+            </tr>
             @endforeach
         </tbody>
     </table>
