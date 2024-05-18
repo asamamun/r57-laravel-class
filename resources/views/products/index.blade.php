@@ -10,6 +10,7 @@
         <thead>
             <tr>
                 <th>#</th>
+                <th>Action</th>
                 <th>Category/Subcategory</th>
                 <th>Images</th>
                 <th>Name</th>
@@ -21,13 +22,22 @@
                 <th>Hot</th>
                 <th>New</th>
                 
-                <th>Action</th>
+                
             </tr>
         </thead>
         <tbody>
             @foreach ($products as $product)
             <tr>
                 <td>{{ $loop->iteration }}</td>
+                <td>
+                    <a class="btn btn-sm btn-primary" href="{{ route('products.show', $product->id) }}"> <i class="bi bi-eye-fill"></i> </a>
+                    <a class="btn btn-sm btn-warning" href="{{ route('products.edit', $product->id) }}"><i class="bi bi-pencil"></i></a>
+                    <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display: inline-block">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+                    </form>
+                </td>
                 <td>{{ $product->category->name }} <br>{{ $product->subcategory->name }}</td>
                 <td>@if ($product->images)
                     
@@ -49,15 +59,7 @@
                 <td @class(['text-danger' => $product->hot])>{{ $product->hot == 1 ? 'hot' : 'not hot' }}</td>
                 <td @class(['text-danger' => $product->new, 'text-success' => !$product->new])>{{ $product->new == 1 ? 'new' : 'not new' }}</td>
                 
-                <td>
-                    <a class="btn btn-sm btn-primary" href="{{ route('products.show', $product->id) }}"> <i class="bi bi-eye-fill"></i> </a>
-                    <a class="btn btn-sm btn-warning" href="{{ route('products.edit', $product->id) }}"><i class="bi bi-pencil"></i></a>
-                    <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display: inline-block">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
-                    </form>
-                </td>
+                
             </tr>
             <tr>
                 <td colspan="12">

@@ -56,6 +56,9 @@ Route::middleware(CheckAdminRole::class)->group(function () {
     Route::resource('subcategories', SubCategoryController::class);
     Route::resource('products', ProductController::class);
     Route::post('deleteimage/{id}', [ProductController::class, 'deleteImage'])->name('deleteimage');
+    // store product comment
+    Route::post('productcomment/{id}', [ProductController::class, 'storecomment'])->name('storecomment');
+
 });
 Route::get("/getsubcat/{id}",[SubcategoryController::class, 'getSubcat']);
 Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');;

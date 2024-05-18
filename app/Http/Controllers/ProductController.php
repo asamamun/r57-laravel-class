@@ -6,8 +6,11 @@ use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Image;
 use App\Models\SubCategory;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
@@ -90,7 +93,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        // dd($product);
+        $product->loadMissing(['images', 'comments.user']);
+        return view('products.show', compact('product'));
     }
 
     /**
@@ -133,5 +138,17 @@ class ProductController extends Controller
         // return redirect()->route('products.create')->with('success', 'Image deleted successfully');
         //json response
         return response()->json(['status'=>true,'message' => 'Image deleted successfully'], 200);
+    }
+    public function storecomment(Request $request, $id){
+        $product = Product::find($id);
+        $request->validate([
+            'comment' => 'required|max:255|min:5',
+        ]);
+        $comment = new Comment();
+        $comment->user_id =  auth()->user()->id;//Auth::id();
+        
+        $comment->comment = $request->comment;
+        $product->comments()->save($comment);
+        return redirect()->back()->with('success', 'Comment added successfully');
     }
 }
