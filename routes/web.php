@@ -18,6 +18,9 @@ use App\Models\User;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+//code segment
+Route::get('/testsegment/{a}/{b}', [TestController::class, 'testsegment']);
+Route::get('/userparam/{userid}', [TestController::class, 'userinfo']);
 // Route::get('/','welcome');
 Route::get('/todos', [TodoController::class, 'index'])->name('todo.index');
 Route::get('/collection', [TestController::class, 'collection']);

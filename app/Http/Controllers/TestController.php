@@ -48,6 +48,15 @@ class TestController extends Controller
     dd($admins->toArray());
        
     }
+
+    public function testsegment(Request $request){
+        //http://localhost/ROUND57/Laravel/todo/public/testsegment/4/7
+        // dd($request->segments());//plural for all segments
+        dd($request->segment(1)); //singular for single segment
+    }
+    public function userinfo($userid){
+        dd(User::find($userid));
+    }
 }
 /*
 In both JavaScript and PHP, arrays are a fundamental data structure that provides a way to store and manipulate collections of data. Each language offers a variety of built-in array methods that allow you to perform common operations on arrays. Here are some of the most popular array methods in JavaScript and PHP:
