@@ -14,6 +14,7 @@ use App\Http\Middleware\CheckAdminRole;
 use Barryvdh\Debugbar\DataCollector\QueryCollector;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
+use Illuminate\Support\Facades\Artisan;
 
 Route::get('/', function () {
     return view('welcome');
@@ -73,6 +74,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+//clear all
+Route::get('ca', function () {
+    Artisan::call('view:clear');
+    Artisan::call('cache:clear');
+    dd("view cleared");
 });
 
 require __DIR__.'/auth.php';

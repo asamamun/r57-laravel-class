@@ -23,8 +23,17 @@ class StoreProductRequest extends FormRequest
      */
     public function rules(): array
     {
+        //https://laravel.com/docs/11.x/validation#available-validation-rules
         return [
-            //
+            // 'name' => 'required',
+            // 'price' => 'required',
+            // 'stock' => 'required',
+            // 'image' => 'required|image',
+            // 'category_id' => 'required',
+            // 'description' => 'required',
+            // 'weight' => 'required',
+            // 'weight_unit' => 'required',
+
         ];
     }
 }

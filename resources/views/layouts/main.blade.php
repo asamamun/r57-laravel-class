@@ -1080,7 +1080,7 @@
         <!-- divider for footer -->
         <div class="mt-4 sm-mt-3"></div>
         <!-- divider for footer ends -->
-        <footer class="py-3 mt-auto container-fluid">
+        {{-- <footer class="py-3 mt-auto container-fluid">
           <div class="row">
             <div class="col text-small">
               <span class="mb-3 mb-md-0">© Your Company | 2024</span>
@@ -1099,7 +1099,11 @@
               </span>
             </div>
           </div>
-        </footer>
+        </footer> --}}
+        <x-footer message="12345678">
+          <h1>testing our footer</h1>
+          <marquee behavior="" direction=""> 1 3 5 7</marquee>
+        </x-footer>
         <!-- footer ends -->
       </div>
       <!-- #pageContent ends -->

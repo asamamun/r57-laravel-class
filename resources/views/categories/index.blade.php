@@ -8,6 +8,7 @@
             <thead>
                 <tr>
                     <th class="text-center">#</th>
+                    <th>Subcategories</th>
                     <th>Name</th>
                     <th>Slug</th>
                     <th>Description</th>

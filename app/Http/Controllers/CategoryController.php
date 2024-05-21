@@ -31,6 +31,8 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        //https://laravel.com/docs/11.x/validation#available-validation-rules
+        
         $validated = $request->validate([
             'name' => 'required|unique:categories|max:255',
             'slug'=>'required|unique:categories|max:255',

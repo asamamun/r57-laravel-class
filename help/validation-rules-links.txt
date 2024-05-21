@@ -1,0 +1,1 @@
+https://laravel.com/docs/11.x/validation#available-validation-rules

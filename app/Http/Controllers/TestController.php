@@ -52,7 +52,8 @@ class TestController extends Controller
     public function testsegment(Request $request){
         //http://localhost/ROUND57/Laravel/todo/public/testsegment/4/7
         // dd($request->segments());//plural for all segments
-        dd($request->segment(1)); //singular for single segment
+        dd($this->arguments());
+        dd($request->segment(1), $request->segment(2), $request->segment(3)); //singular for single segment
     }
     public function userinfo($userid){
         dd(User::find($userid));
