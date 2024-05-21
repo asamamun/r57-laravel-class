@@ -1,4 +1,4 @@
-@extends('layouts.main', ['title' => 'Products Management'])
+@extends('layouts.main2', ['title' => 'Products Management'])
 
 @section('content')
 

@@ -34,6 +34,15 @@
                                     >
                                         Dashboard
                                     </a>
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                    
+                                        <x-responsive-nav-link class="py-2" :href="route('logout')"
+                                                onclick="event.preventDefault();
+                                                            this.closest('form').submit();">
+                                            {{ __('Log Out') }}
+                                        </x-responsive-nav-link>
+                                    </form>
                                 @else
                                     <a
                                         href="{{ route('login') }}"

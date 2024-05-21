@@ -50,6 +50,9 @@ Route::get("testparam", [TestController::class, 'testparam']);
 Route::get('/db/dbone', [DbtestController::class, 'dbone']);
 //profiletest
 Route::get('/profiletest/{id}', [UserController::class, 'profiletest']);
+Route::get('/userdashboard', [UserController::class, 'userdashboard'])->name('userdashboard');
+
+
 Route::middleware(CheckAdminRole::class)->group(function () {
     Route::post('/todo', [TodoController::class, 'store']);
     // Route::delete('/todo', [TodoController::class, 'checkdelete']);
@@ -65,7 +68,7 @@ Route::middleware(CheckAdminRole::class)->group(function () {
 
 });
 Route::get("/getsubcat/{id}",[SubcategoryController::class, 'getSubcat']);
-Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');;
+Route::middleware(CheckAdminRole::class)->get('/dashboard', [UserController::class, 'index'])->name('dashboard');
 /* Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard'); */
