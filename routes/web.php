@@ -11,9 +11,11 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\CheckAdminRole;
+use App\Models\Product;
 use Barryvdh\Debugbar\DataCollector\QueryCollector;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Artisan;
 
 Route::get('/', function () {
@@ -53,7 +55,7 @@ Route::get('/profiletest/{id}', [UserController::class, 'profiletest']);
 Route::get('/userdashboard', [UserController::class, 'userdashboard'])->name('userdashboard');
 
 
-Route::middleware(CheckAdminRole::class)->group(function () {
+Route::middleware('admin')->group(function () {
     Route::post('/todo', [TodoController::class, 'store']);
     // Route::delete('/todo', [TodoController::class, 'checkdelete']);
     Route::get('/todo/add', [TodoController::class, 'create']);
@@ -85,5 +87,32 @@ Route::get('ca', function () {
     Artisan::call('cache:clear');
     dd("view cleared");
 });
+
+//ch10
+Route::get('route1', function () {
+    // return new Illuminate\Http\Response('Hello1!');
+    return new Response('Hello1!');
+   });
+   // Same, using global function:
+Route::get('route2', function () {
+    $users = User::all();
+    return response()->json($users);
+});
+Route::get('allusersproducts', function () {
+    $products = Product::all();
+    $users = User::all();
+    return response()->json(['products' => $products, 'users' => $users]);
+    // $totfastal = $products->count();
+    // return response()->json(['products' => $products, 'total' => $totfastal]);
+});
+Route::get('categorysubcategory',[CategoryController::class, 'categorysubcategory']);
+Route::get('errortest1', function () {
+    return response('Error!', 400)
+        ->header('Content-Type', 'text/plain')
+        ->header('X-My-Header', 'MyValue');        
+});
+Route::get('download', function () {
+    return response()->download(storage_path('app/public/logo.png'));
+});   
 
 require __DIR__.'/auth.php';

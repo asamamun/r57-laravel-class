@@ -1,0 +1,27 @@
+With the exciting changes in Laravel 11, we now work with Bootstrap/App instead of Http/Kernel. This shift allows for more streamlined configurations. A handy feature I discovered is how to add $middlewareAliases. Here’s a quick guide:
+
+In Laravel 11, you can easily add middleware aliases by modifying the Application::configure() method. This method now handles most of what you did in Http/Kernel previously. Here's a snippet showing how to add middleware aliases:
+
+Copy
+use App\Http\Middleware\CheckAdminRole;
+
+return Application::configure()
+    ->withProviders()
+    ->withRouting(
+        web: __DIR__.'/../routes/web.php',
+        // api: __DIR__.'/../routes/api.php',
+        commands: __DIR__.'/../routes/console.php',
+        // channels: __DIR__.'/../routes/channels.php',
+    )
+    ->withMiddleware(function (Middleware $middleware) {
+        $middleware->alias(['role' => RoleMiddleware::class]);
+	$middleware->alias(['admin' => CheckAdminRole::class]);
+    })
+    ->withExceptions(function (Exceptions $exceptions) {
+        //
+    })->create();
+
+This approach simplifies adding middleware aliases and aligns with Laravel 11's new configuration style. It's a great example of Laravel's evolving, developer-friendly architecture.
+
+
+link: https://laracasts.com/discuss/channels/laravel/how-to-add-middleware-aliases-in-laravel-11

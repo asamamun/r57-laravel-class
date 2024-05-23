@@ -90,4 +90,11 @@ class CategoryController extends Controller
     {
         //
     }
+
+    function categorysubcategory(){
+        //return in json
+        $total = Category::count();
+        $categories = Category::with('subcategories')->skip(0)->take(2)->get();
+        return response()->json(['categories' => $categories, 'total' => $total]);
+    }
 }
