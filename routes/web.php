@@ -11,6 +11,7 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\CheckAdminRole;
+use App\Idb\Gnsl;
 use App\Models\Product;
 use Barryvdh\Debugbar\DataCollector\QueryCollector;
 use Illuminate\Support\Facades\Route;
@@ -113,6 +114,23 @@ Route::get('errortest1', function () {
 });
 Route::get('download', function () {
     return response()->download(storage_path('app/public/logo.png'));
-});   
+}); 
+
+//ch11
+Route::get("checkingapp", function () {
+    // dd(app(Gnsl::class));
+    // Here, we are using the `app()` helper function to get the application
+    // instance and then using the `bind()` method to bind an instance of the
+    // `Gnsl` class to the application container. This means that any time the
+    // `Gnsl` class is requested from the container (using the `app()` helper),
+    // the same instance of the `Gnsl` class will be returned.
+    //
+    // This is useful for cases where you have a class that needs to be used
+    // throughout your application and you want to ensure that only one instance
+    // of that class is created. It's a way to implement the Singleton design
+    // pattern in Laravel.
+    app()->bind(Gnsl::class);
+    dd(app());
+});
 
 require __DIR__.'/auth.php';
